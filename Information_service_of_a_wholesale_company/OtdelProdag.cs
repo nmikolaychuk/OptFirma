@@ -302,7 +302,7 @@ namespace Information_service_of_a_wholesale_company
 
                 var connection = new SqlConnection(connectionString);
                 connection.Open();
-                var req = @"INSERT  INTO Nakladnie (Id, Naklad) VALUES ('" + res + "','Akt " + res + "')";
+                var req = @"INSERT  INTO Nakladnie (Id, Naklad) VALUES ('" + res + "','Nakladnaya " + res + "')";
                 var req1 = @"INSERT  INTO NakladnieSave (Id, Person, Data, Summ) VALUES ('" + res + "','" + client + "','" + time.ToString("yyyy-MM-dd") + "','" + itogo + "')";
                 var command = new SqlCommand(req, connection);
                 var command1 = new SqlCommand(req1, connection);
