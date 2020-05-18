@@ -19,7 +19,7 @@ namespace Information_service_of_a_wholesale_company
             InitializeComponent();
         }
         
-        private const string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\knopk\\Desktop\\optfirma\\Information_service_of_a_wholesale_company\\information_service.mdf;Integrated Security=True";
+        private const string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Никита\\Desktop\\1\\Information_service_of_a_wholesale_company\\information_service.mdf;Integrated Security=True";
 
         void updateWarehouseDGV()
         {
@@ -27,7 +27,8 @@ namespace Information_service_of_a_wholesale_company
                                 JOIN Warehouse
                                     ON Product.Warehouse_id=Warehouse.Id
                                 JOIN UnitsForProduct
-                                    ON Product.Units_id=UnitsForProduct.Id";
+                                    ON Product.Units_id=UnitsForProduct.Id
+                                    WHERE Quantity>0";
             var adapter = new SqlDataAdapter(request, connectionString);
             DataTable warehouseTable = new DataTable();
             adapter.Fill(warehouseTable);
@@ -247,6 +248,12 @@ namespace Information_service_of_a_wholesale_company
         {
             updateSpisanieDGV();
             updateNakladnieDGV();
+        }
+
+        private void delivery_of_things_Click(object sender, EventArgs e)
+        {
+            var form = new DeliveryOfGoods();
+            var res = form.ShowDialog();
         }
     }
 }

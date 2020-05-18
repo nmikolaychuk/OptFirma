@@ -79,5 +79,15 @@ namespace Information_service_of_a_wholesale_company.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ФонВыдачаТоваров {
+            get {
+                object obj = ResourceManager.GetObject("ФонВыдачаТоваров", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

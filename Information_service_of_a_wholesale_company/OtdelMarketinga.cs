@@ -28,9 +28,15 @@ namespace Information_service_of_a_wholesale_company
 
             naimoften_to_timepicker.CustomFormat = "dd.MM.yyyy г.";
             naimoften_to_timepicker.Format = DateTimePickerFormat.Custom;
+
+            naimProfit_from_timepicker.CustomFormat = "dd.MM.yyyy г.";
+            naimProfit_from_timepicker.Format = DateTimePickerFormat.Custom;
+
+            naimProfit_to_timepicker.CustomFormat = "dd.MM.yyyy г.";
+            naimProfit_to_timepicker.Format = DateTimePickerFormat.Custom;
         }
 
-        private const string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\knopk\\Desktop\\optfirma\\Information_service_of_a_wholesale_company\\information_service.mdf;Integrated Security=True";
+        private const string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Никита\\Desktop\\1\\Information_service_of_a_wholesale_company\\information_service.mdf;Integrated Security=True";
 
         void updateNaibOftenDGV()
         {
@@ -79,7 +85,9 @@ namespace Information_service_of_a_wholesale_company
             var request = @"SELECT TOP 10 Nazvanie, SUM(Price * kol) AS cena FROM InfoTovar
                                 JOIN SaveInfo ON InfoTovar.Id = SaveInfo.id_info
                                 JOIN NakladnieSave ON NakladnieSave.Id = SaveInfo.id_nakladS
-                                WHERE NakladnieSave.Data BETWEEN '" + date_from.ToString("yyyy-MM-dd") + "' AND '" + date_to.ToString("yyyy-MM-dd")  + "' GROUP BY[Nazvanie] ORDER BY cena";
+                                WHERE NakladnieSave.Data BETWEEN '" + date_from.ToString("yyyy-MM-dd") 
+                                + "' AND '" + date_to.ToString("yyyy-MM-dd")  
+                                + "' GROUP BY[Nazvanie] ORDER BY cena";
 
             SqlDataAdapter Order = new SqlDataAdapter(request, connectionString);
             DataTable table = new DataTable();

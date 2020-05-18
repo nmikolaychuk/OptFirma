@@ -36,12 +36,13 @@
             this.add_things_button = new System.Windows.Forms.Button();
             this.warehouse_dgv = new System.Windows.Forms.DataGridView();
             this.tab_documents = new System.Windows.Forms.TabPage();
+            this.NewDannie = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.spisanie_dgv = new System.Windows.Forms.DataGridView();
             this.nakladnie_dgv = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.NewDannie = new System.Windows.Forms.Button();
+            this.delivery_of_things = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tab_warehouse.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.warehouse_dgv)).BeginInit();
@@ -64,6 +65,7 @@
             // tab_warehouse
             // 
             this.tab_warehouse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tab_warehouse.Controls.Add(this.delivery_of_things);
             this.tab_warehouse.Controls.Add(this.things_outtime_button);
             this.tab_warehouse.Controls.Add(this.delete_things_button);
             this.tab_warehouse.Controls.Add(this.edit_things_button);
@@ -95,7 +97,7 @@
             this.delete_things_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.delete_things_button.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.delete_things_button.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.delete_things_button.Location = new System.Drawing.Point(814, 459);
+            this.delete_things_button.Location = new System.Drawing.Point(546, 459);
             this.delete_things_button.Name = "delete_things_button";
             this.delete_things_button.Size = new System.Drawing.Size(162, 30);
             this.delete_things_button.TabIndex = 3;
@@ -157,6 +159,19 @@
             this.tab_documents.TabIndex = 1;
             this.tab_documents.Text = "Документы";
             // 
+            // NewDannie
+            // 
+            this.NewDannie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.NewDannie.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NewDannie.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.NewDannie.Location = new System.Drawing.Point(541, 459);
+            this.NewDannie.Name = "NewDannie";
+            this.NewDannie.Size = new System.Drawing.Size(162, 30);
+            this.NewDannie.TabIndex = 4;
+            this.NewDannie.Text = "Обновить данные";
+            this.NewDannie.UseVisualStyleBackColor = false;
+            this.NewDannie.Click += new System.EventHandler(this.NewDannie_Click);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -212,18 +227,18 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Склад";
             // 
-            // NewDannie
+            // delivery_of_things
             // 
-            this.NewDannie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.NewDannie.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.NewDannie.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.NewDannie.Location = new System.Drawing.Point(541, 459);
-            this.NewDannie.Name = "NewDannie";
-            this.NewDannie.Size = new System.Drawing.Size(162, 30);
-            this.NewDannie.TabIndex = 4;
-            this.NewDannie.Text = "Обновить данные";
-            this.NewDannie.UseVisualStyleBackColor = false;
-            this.NewDannie.Click += new System.EventHandler(this.NewDannie_Click);
+            this.delivery_of_things.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.delivery_of_things.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.delivery_of_things.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.delivery_of_things.Location = new System.Drawing.Point(714, 459);
+            this.delivery_of_things.Name = "delivery_of_things";
+            this.delivery_of_things.Size = new System.Drawing.Size(262, 30);
+            this.delivery_of_things.TabIndex = 5;
+            this.delivery_of_things.Text = "Выдача товара по накладной";
+            this.delivery_of_things.UseVisualStyleBackColor = false;
+            this.delivery_of_things.Click += new System.EventHandler(this.delivery_of_things_Click);
             // 
             // Warehouse
             // 
@@ -262,5 +277,6 @@
         public System.Windows.Forms.DataGridView spisanie_dgv;
         public System.Windows.Forms.DataGridView nakladnie_dgv;
         private System.Windows.Forms.Button NewDannie;
+        private System.Windows.Forms.Button delivery_of_things;
     }
 }

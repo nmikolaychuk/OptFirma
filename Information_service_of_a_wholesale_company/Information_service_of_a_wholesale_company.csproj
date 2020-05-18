@@ -79,12 +79,24 @@
     <Compile Include="Client.Designer.cs">
       <DependentUpon>Client.cs</DependentUpon>
     </Compile>
+    <Compile Include="DeliveryOfGoods.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeliveryOfGoods.Designer.cs">
+      <DependentUpon>DeliveryOfGoods.cs</DependentUpon>
+    </Compile>
     <Compile Include="Input.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include=".Designer.cs">
       <DependentUpon>Input.cs</DependentUpon>
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NumberOfOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NumberOfOrder.Designer.cs">
+      <DependentUpon>NumberOfOrder.cs</DependentUpon>
     </Compile>
     <Compile Include="OtdelMarketinga.cs">
       <SubType>Form</SubType>
@@ -133,8 +145,14 @@
     <EmbeddedResource Include="Client.resx">
       <DependentUpon>Client.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DeliveryOfGoods.resx">
+      <DependentUpon>DeliveryOfGoods.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Input.resx">
       <DependentUpon>Input.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NumberOfOrder.resx">
+      <DependentUpon>NumberOfOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OtdelMarketinga.resx">
       <DependentUpon>OtdelMarketinga.cs</DependentUpon>
@@ -185,6 +203,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>information_service.mdf</DependentUpon>
     </Content>
+    <None Include="Properties\ФонВыдачаТоваров.jpg" />
     <None Include="Properties\Screenshot_4.png" />
     <None Include="Properties\Авторизация.png" />
   </ItemGroup>
