@@ -58,13 +58,14 @@ namespace Information_service_of_a_wholesale_company
 
         void updateListDGV()
         {
-            var request = @"SELECT name,kol,Id FROM help_prod";
+            var request = @"SELECT * FROM help_prod";
             var adapter = new SqlDataAdapter(request, connectionString);
             DataTable outtimeTable = new DataTable();
             adapter.Fill(outtimeTable);
             dataGridList.DataSource = outtimeTable;
 
             dataGridList.Columns["Id"].Visible = false;
+            dataGridList.Columns["price"].Visible = false;
 
             dataGridList.Columns["name"].HeaderText = "Наименование";
             dataGridList.Columns["kol"].HeaderText = "Количество";
@@ -343,7 +344,8 @@ namespace Information_service_of_a_wholesale_company
 
                 var connection = new SqlConnection(connectionString);
                 connection.Open();
-                var req = @"INSERT INTO Nakladnie (Id, Naklad) VALUES ('" + res + "','Nakladnaya " + res + "')";
+                var flag_off = 0;
+                var req = @"INSERT INTO Nakladnie (Id, Naklad, delivery_flag) VALUES ('" + res + "','Nakladnaya " + res + "', '" + flag_off + "')";
                 var req1 = @"INSERT INTO NakladnieSave (Id, Person, Data, Summ) VALUES ('" + res + "','" + client + "','" + time.ToString("yyyy-MM-dd") + "','" + itogo + "')";
                 var command = new SqlCommand(req, connection);
                 var command1 = new SqlCommand(req1, connection);
