@@ -36,7 +36,7 @@ namespace Information_service_of_a_wholesale_company
             naimProfit_to_timepicker.Format = DateTimePickerFormat.Custom;
         }
 
-        private const string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Никита\\Desktop\\1\\Information_service_of_a_wholesale_company\\information_service.mdf;Integrated Security=True";
+        private const string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Никита\\Desktop\\OptFirma\\Information_service_of_a_wholesale_company\\information_service.mdf;Integrated Security=True";
 
         void updateNaibOftenDGV()
         {

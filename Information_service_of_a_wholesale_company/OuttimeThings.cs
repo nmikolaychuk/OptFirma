@@ -21,7 +21,7 @@ namespace Information_service_of_a_wholesale_company
             InitializeComponent();
         }
 
-        private const string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Никита\\Desktop\\1\\Information_service_of_a_wholesale_company\\information_service.mdf;Integrated Security=True";
+        private const string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Никита\\Desktop\\OptFirma\\Information_service_of_a_wholesale_company\\information_service.mdf;Integrated Security=True";
 
         void updateOuttimeDGV()
         {
@@ -32,7 +32,7 @@ namespace Information_service_of_a_wholesale_company
                                     ON Product.Warehouse_id=Warehouse.Id
                                 JOIN UnitsForProduct
                                     ON Product.Units_id=UnitsForProduct.Id
-                                WHERE Product.ValidUntil < '" + time.ToString("yyyy-MM-dd") + "'";
+                                WHERE Product.ValidUntil < '" + time.ToString("yyyy-MM-dd") + "' AND Product.Quantity > 0";
             var adapter = new SqlDataAdapter(request, connectionString);
             DataTable outtimeTable = new DataTable();
             adapter.Fill(outtimeTable);
@@ -92,7 +92,7 @@ namespace Information_service_of_a_wholesale_company
                                     ON Product.Warehouse_id=Warehouse.Id
                                 JOIN UnitsForProduct
                                     ON Product.Units_id=UnitsForProduct.Id
-                                WHERE Product.ValidUntil < '" + time.ToString("yyyy-MM-dd") + "'";
+                                WHERE Product.ValidUntil < '" + time.ToString("yyyy-MM-dd") + "' AND Product.Quantity > 0";
             var adapter = new SqlDataAdapter(request, connectionString);
             DataTable outtimeTable = new DataTable();
             adapter.Fill(outtimeTable);
@@ -163,13 +163,15 @@ namespace Information_service_of_a_wholesale_company
             var connection = new SqlConnection(connectionString);
             connection.Open();
             var time = DateTime.Today;
-            var request = @"UPDATE Product SET Quantity = 0 WHERE Product.ValidUntil < '" + time.ToString("yyyy-MM-dd") + "'";
+            var request = @"UPDATE Product SET Quantity = 0 WHERE Product.ValidUntil < '" + time.ToString("yyyy-MM-dd") + "' AND Product.Quantity > 0";
 
             var command = new SqlCommand(request, connection);
             command.ExecuteNonQuery();
 
             connection.Close();
             updateOuttimeDGV();
+
+            MessageBox.Show("Товары с истекшим сроком хранения успешно списаны со склада", "Success", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         private void Inform_Click(object sender, EventArgs e)
