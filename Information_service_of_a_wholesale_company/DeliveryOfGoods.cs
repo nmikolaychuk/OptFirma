@@ -46,15 +46,13 @@ namespace Information_service_of_a_wholesale_company
             //           JOIN InfoTovar
             //            ON SaveInfo.id_info = InfoTovar.Id
             //                    WHERE Nakladnie.Id = '" + number + "'";
-            var Query = @"SELECT * FROM Nakladnie
-			                    JOIN SaveInfo
-				                    ON Nakladnie.Id = SaveInfo.id_nakladS
-			                    JOIN InfoTovar
-				                    ON SaveInfo.id_info = InfoTovar.Id
-								JOIN Naklad_Priduct
-									ON Nakladnie.Id = Naklad_Priduct.id_naklad
-								JOIN Product
-									ON Naklad_Priduct.id_tovar = Product.Id
+            var Query = @"SELECT * FROM InfoTovar
+					JOIN SaveInfo
+						ON InfoTovar.Id = SaveInfo.id_info
+					JOIN Nakladnie
+						ON SaveInfo.id_nakladS = Nakladnie.Id
+					JOIN Product
+						ON Product.NameOfItem = InfoTovar.Nazvanie
                                 WHERE Nakladnie.Id = '" + number + "'";
             SqlDataAdapter AORder = new SqlDataAdapter(Query, connectionString);
             DataTable Ttable = new DataTable();
@@ -70,14 +68,6 @@ namespace Information_service_of_a_wholesale_company
                 Kolvo = Convert.ToInt32(Row["kol"].ToString());
                 KolvonaSklade = Convert.ToInt32(Row["Quantity"].ToString());
 
-                //if (Kolvo < KolvonaSklade)
-                //{
-                //    var request = @"UPDATE TOP(1) Product SET Quantity = Quantity - '" + Kolvo + "' WHERE Product.NameOfItem = '" + Tovar + "' AND Product.Quantity > 0";
-                //    var command = new SqlCommand(request, connection);
-                //    command.ExecuteNonQuery();
-                //}
-                //else
-                //{
                 var request1 = @"SELECT Id, Quantity FROM Product WHERE Product.NameOfItem = '" + Tovar + "' AND Product.Quantity > 0";
                 var command1 = new SqlCommand(request1, connection);
                 command1.ExecuteNonQuery();
@@ -121,15 +111,13 @@ namespace Information_service_of_a_wholesale_company
             {
                 var number_of_order = form.numberoforder_textbox.Text;
                 number_textbox.Text = number_of_order;
-                var request = @"SELECT * FROM Nakladnie
-			                    JOIN SaveInfo
-				                    ON Nakladnie.Id = SaveInfo.id_nakladS
-			                    JOIN InfoTovar
-				                    ON SaveInfo.id_info = InfoTovar.Id
-								JOIN Naklad_Priduct
-									ON Nakladnie.Id = Naklad_Priduct.id_naklad
-								JOIN Product
-									ON Naklad_Priduct.id_tovar = Product.Id
+                var request = @"SELECT * FROM InfoTovar
+					JOIN SaveInfo
+						ON InfoTovar.Id = SaveInfo.id_info
+					JOIN Nakladnie
+						ON SaveInfo.id_nakladS = Nakladnie.Id
+					JOIN Product
+						ON Product.NameOfItem = InfoTovar.Nazvanie
                                 WHERE Nakladnie.Id = '" + number_of_order + "'";
                 var adapter = new SqlDataAdapter(request, connectionString);
                 DataTable delivery = new DataTable();
@@ -141,9 +129,7 @@ namespace Information_service_of_a_wholesale_company
                 delivery_dgv.Columns["id_nakladS"].Visible = false;
                 delivery_dgv.Columns["id_info"].Visible = false;
                 delivery_dgv.Columns["Id1"].Visible = false;
-                //delivery_dgv.Columns["id_tovar"].Visible = false;
-                delivery_dgv.Columns["id_naklad"].Visible = false;
-                // delivery_dgv.Columns["Id2"].Visible = false;
+                delivery_dgv.Columns["Id2"].Visible = false;
                 delivery_dgv.Columns["NameOfItem"].Visible = false;
                 delivery_dgv.Columns["Units_id"].Visible = false;
                 delivery_dgv.Columns["Made"].Visible = false;
